@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "commonjs",
+    "noImplicitAny": true,
+    "experimentalDecorators": true
+  },
+  "include": ["./@types", "./src/**/*.vue", "./src/**/*.ts"],
+  "paths": { "@/*": ["/src/*"] },
+  "baseUrl": "./"
+}
