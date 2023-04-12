@@ -1,5 +1,5 @@
 const path = require("path");
-const VueLoaderPlugin = require("vue-loader/lib/plugin");
+const { VueLoaderPlugin } = require("vue-loader");
 const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
@@ -10,6 +10,7 @@ module.exports = {
     filename: "bundle.js",
   },
   devServer: {
+    watchContentBase: true,
     contentBase: path.resolve(__dirname, "public"),
   },
   module: {
@@ -17,6 +18,13 @@ module.exports = {
       {
         test: /\.vue$/,
         loader: "vue-loader",
+        options: {
+          compilerOptions: {
+            compatConfig: {
+              MODE: 3
+            }
+          }
+        }
       },
       {
         test: /\.js$/,
@@ -42,7 +50,7 @@ module.exports = {
   resolve: {
     extensions: [".js", ".ts", ".vue", ".json"],
     alias: {
-      vue$: "vue/dist/vue.esm.js",
+      vue$: "vue/dist/vue.runtime.esm-bundler.js",
     },
   },
   plugins: [
